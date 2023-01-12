@@ -1,8 +1,17 @@
-import React from 'react';
+/// <reference types="react" />
+import * as react from 'react';
+import ReactDataGrid from '@inovua/reactdatagrid-enterprise';
+import ReactDataGridProps from '@inovua/reactdatagrid-enterprise/types';
 
-interface Props {
-    onClick: () => void;
+declare namespace EnhancedReactDataGridType {
+    type Classes = Partial<{
+        container: string;
+    }>;
 }
-declare const Button: React.FC<React.PropsWithChildren<Props>>;
+declare type EnhancedReactDataGridProps = {
+    classes?: EnhancedReactDataGridType.Classes;
+} & Partial<typeof ReactDataGrid["defaultProps"]> & Pick<ReactDataGridProps.TypeDataGridProps, "columns" | "dataSource"> & Partial<Omit<ReactDataGridProps.TypeDataGridProps, "columns" | "dataSource">>;
 
-export { Button };
+declare const EnhancedReactDataGrid: react.FC<Omit<EnhancedReactDataGridProps, "columns" | "dataSource">>;
+
+export { EnhancedReactDataGrid as default };

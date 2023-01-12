@@ -1,1 +1,3 @@
-export { default as Button } from "./components/ui/button";
+import App from "./App";
+const EnhancedReactDataGrid = App;
+export default EnhancedReactDataGrid;
